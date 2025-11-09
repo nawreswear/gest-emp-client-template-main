@@ -642,7 +642,11 @@ public class GridCalendarView extends GridPane implements CalendarView {
             );
         }
     }
+    // 🔍 VALIDATION DES DATES
+    private boolean isDateInCurrentRange(java.time.LocalDateTime dateTime) {
+        if (dateTime == null) return false;
 
+<<<<<<< Updated upstream
     private void updateFirstRowLabelsTheme() {
         for (int i = 0; i < firstRowLabels.size(); i++) {
             Label label = firstRowLabels.get(i);
@@ -678,5 +682,33 @@ public class GridCalendarView extends GridPane implements CalendarView {
                             "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 6, 0, 0, 3);"
             );
         }
+=======
+        // Récupérer la plage de dates actuelle du calendrier
+        // Vous devez avoir accès à ces informations depuis votre DayGenerator
+        java.time.LocalDate currentDate = dateTime.toLocalDate();
+
+        // Plage par défaut (à adapter selon votre implémentation)
+        java.time.LocalDate startDate = java.time.LocalDate.of(2025, 11, 3);
+        java.time.LocalDate endDate = java.time.LocalDate.of(2025, 11, 10);
+
+        return !currentDate.isBefore(startDate) && !currentDate.isAfter(endDate);
+    }
+
+    private void showDateOutOfRangeWarning(int slotId, java.time.LocalDateTime invalidDate) {
+        String message = String.format(
+                "⚠️  Le créneau #%d a une date hors plage: %s\nPlage affichée: 2025-11-03 à 2025-11-10",
+                slotId, invalidDate.toLocalDate()
+        );
+        showTemporaryNotification(message, 3000);
+        System.out.println("❌ Slot " + slotId + " - Date hors plage: " + invalidDate.toLocalDate());
+    }
+    private void setupPropertyListeners() {
+        darkModeProperty.addListener((obs, oldVal, newVal) -> applyCurrentTheme());
+        currentDisplayMode.addListener((obs, oldVal, newVal) -> applyDisplayMode());
+        scaleFactor.addListener((obs, oldVal, newVal) -> {
+            updateLabelsScale();
+            applyGridBackground();
+        });
+>>>>>>> Stashed changes
     }
 }
