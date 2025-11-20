@@ -1,6 +1,5 @@
 package tn.iset.m2glnt.client.model;
 
-
 import tn.iset.m2glnt.client.service.dto.SlotDTO;
 
 public interface SlotDTOConverter {

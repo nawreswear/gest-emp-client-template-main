@@ -1,5 +1,6 @@
 module fr.univ_amu.m1info.client {
     requires com.fasterxml.jackson.datatype.jsr310;
+    requires jbcrypt;
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
     requires javafx.fxml;

@@ -33,4 +33,5 @@ public interface Calendar {
      * @return {@code true} if the slot was deleted and {@code false} otherwise
      */
     boolean delete(Slot slot);
+
 }
